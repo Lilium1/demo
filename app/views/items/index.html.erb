@@ -13,7 +13,9 @@
 <table>
 <% @items.each do |item| %>
   <tr>
-    <td><%= link_to image_tag(item.image_url, :height => "120px"), item %></td>
+    <td>
+      <%= link_to image_tag(item.image_url, :height => "120px"), item %>
+    </td>
     <td>
         <div class="title"><%= item.title %></div>
         <div class="description"><%= item.description %></div>

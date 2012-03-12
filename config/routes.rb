@@ -16,6 +16,8 @@ Demo::Application.routes.draw do
 
   match "cart/add/:id", :to => "cart#index"
 
+  resources :items
+
   #map.connect ":controller/:action/:id"
   # The priority is based upon order of creation:
   # first created -> highest priority.
