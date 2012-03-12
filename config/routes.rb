@@ -1,5 +1,11 @@
 Demo::Application.routes.draw do
 
+  resources :orders
+
+  resources :carts
+
+  resources :users
+
   resources :cart
 
   match "cart/add"
