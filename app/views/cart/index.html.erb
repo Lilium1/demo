@@ -1,0 +1,13 @@
+<h1>Your Cart</h1>
+<%= session.present? %>
+<%= @cart %>
+<table>
+  <% @cart.each do |id, quantity| %>
+      <% item = Item.find(id) %>
+      <tr>
+        <td>
+          <%= item.title %>
+        </td>
+      </tr>
+  <% end %>
+</table>

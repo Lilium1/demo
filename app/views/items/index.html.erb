@@ -1,0 +1,34 @@
+<h1>Listing items</h1>
+<style type="text/css">
+  .title{
+      font-size: 24pt;
+      font-weight: bold;
+      margin-bottom: 16px;
+  }
+</style>
+<br />
+<% link_to "Your Cart", :controller => :cart, :action => :index %>
+
+
+<table>
+<% @items.each do |item| %>
+  <tr>
+    <td><%= link_to image_tag(item.image_url, :height => "120px"), item %></td>
+    <td>
+        <div class="title"><%= item.title %></div>
+        <div class="description"><%= item.description %></div>
+        <div class="price"><%= number_to_currency item.price, :unit => "&pound;" %></div>
+        <div class="links"><%= link_to 'Show', item %> | <%= button_to "Add to Cart", :controller => :cart, :action => :add, :id => item %> | <%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %></div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <hr />
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Item', new_item_path %>
