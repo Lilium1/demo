@@ -1,6 +1,8 @@
 Demo::Application.routes.draw do
 
-  resources :orders
+  resources :orders do
+    resources :items, :users
+  end
 
   resources :carts
 
@@ -14,7 +16,15 @@ Demo::Application.routes.draw do
 
   match "cart/edit"
 
-  match "cart/add/:id", :to => "cart#index"
+  match "/cart/:id", :to => "carts#show"
+
+  match "cart/add/:id", :to => "carts#index"
+
+  match '/signup', to: 'users#new'
+
+  match '/signin',  to: 'sessions#new'
+
+  match '/signout', to: 'sessions#destroy', via: :delete
 
   resources :items
 
